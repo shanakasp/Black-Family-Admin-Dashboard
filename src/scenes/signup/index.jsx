@@ -8,36 +8,60 @@ import Paper from "@mui/material/Paper";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 import * as React from "react";
-import { Link } from "react-router-dom";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © B L A C K F A M I L Y "}
+function SignInSide() {
+  const [error, setError] = React.useState("");
 
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const defaultTheme = createTheme();
-
-export default function SignInSide() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
+
+    try {
+      const response = await axios.post(
+        "https://blackapi.hasthiya.org/admin/login",
+        {
+          email: data.get("email"),
+          password: data.get("password"),
+        }
+      );
+
+      console.log("Response from backend:", response.data); // Log the response
+
+      const { result } = response.data;
+      if (result || result.token) {
+        localStorage.setItem("token", result.token);
+        console.log("Token saved to localStorage:", result.token);
+        window.location.href = "/dd"; // Navigate to /dd
+      } else {
+        setError("Invalid email or password.");
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
   };
+
+  const defaultTheme = createTheme();
+
+  function Copyright(props) {
+    return (
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        align="center"
+        {...props}
+      >
+        {"Copyright © B L A C K F A M I L Y "}
+        {new Date().getFullYear()}
+        {"."}
+      </Typography>
+    );
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -50,7 +74,6 @@ export default function SignInSide() {
           md={7}
           sx={{
             position: "relative", // Ensure relative positioning
-            // backgroundImage: `url(../../assets/user.png)`,
             backgroundImage:
               "url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp)",
             backgroundRepeat: "no-repeat",
@@ -108,16 +131,18 @@ export default function SignInSide() {
                 autoComplete="current-password"
               />
 
-              <Link to="/dd">
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-              </Link>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+
+              <Typography variant="body2" color="error" align="center">
+                {error}
+              </Typography>
 
               <Copyright sx={{ mt: 5 }} />
             </Box>
@@ -127,3 +152,5 @@ export default function SignInSide() {
     </ThemeProvider>
   );
 }
+
+export default SignInSide;
