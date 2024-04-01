@@ -21,13 +21,13 @@ const Topbar = () => {
     >
       <Box display="flex" borderRadius="3px">
         <Box display="flex" justifyContent="center" alignItems="center">
-          <img
+          {/* <img
             alt="profile-user"
             width="50px"
             height="50px"
             src={`../../assets/user.png`}
             style={{ cursor: "pointer", borderRadius: "20%" }}
-          />
+          /> */}
         </Box>{" "}
         <Typography
           variant="h2"
@@ -35,7 +35,7 @@ const Topbar = () => {
           fontWeight="bold"
           sx={{ m: "10px " }}
         >
-          Hasthiya IT
+          Black Family
         </Typography>
       </Box>
 
