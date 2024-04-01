@@ -85,7 +85,16 @@ function SignInSide() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{ backgroundColor: "#3c3756" }}
+        >
           <Box
             sx={{
               my: 8,
@@ -100,15 +109,19 @@ function SignInSide() {
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <h1>Black Family Admin Dashboard</h1>
-            <Typography component="h1" variant="h5">
+            <h1 style={{ color: "#fff" }}>Black Family Admin Dashboard</h1>
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{ color: "#fff", fontWeight: "bold" }}
+            >
               Sign in
             </Typography>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ mt: 1, color: "#fff" }}
             >
               <TextField
                 margin="normal"
@@ -119,6 +132,11 @@ function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                InputLabelProps={{ style: { color: "#fff" } }}
+                InputProps={{
+                  style: { color: "#fff" },
+                  className: "input-field",
+                }}
               />
               <TextField
                 margin="normal"
@@ -129,6 +147,11 @@ function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                InputLabelProps={{ style: { color: "#fff" } }}
+                InputProps={{
+                  style: { color: "#fff" },
+                  className: "input-field",
+                }}
               />
 
               <Button
@@ -140,7 +163,18 @@ function SignInSide() {
                 Sign In
               </Button>
 
-              <Typography variant="body2" color="error" align="center">
+              <Typography
+                variant="body2"
+                color="error"
+                align="center"
+                sx={{
+                  backgroundColor: "#3c3756",
+                  color: "#fff",
+                  padding: "8px",
+                  borderRadius: "4px",
+                  mt: 2,
+                }}
+              >
                 {error}
               </Typography>
 
