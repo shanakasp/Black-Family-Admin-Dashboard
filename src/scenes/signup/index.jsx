@@ -134,10 +134,11 @@ function SignInSide() {
                 autoFocus
                 InputLabelProps={{ style: { color: "#fff" } }}
                 InputProps={{
-                  style: { color: "#fff" },
+                  style: { color: "#fff", borderColor: "#fff" }, // Add borderColor property here
                   className: "input-field",
                 }}
               />
+
               <TextField
                 margin="normal"
                 required
