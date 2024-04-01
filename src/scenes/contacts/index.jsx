@@ -1,13 +1,30 @@
-import { Box } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete"; // Import DeleteIcon
+import EditIcon from "@mui/icons-material/Edit";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Box, IconButton, Tooltip, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
-
+import { mockDataContacts } from "../../data/mockData";
+import { tokens } from "../../theme";
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const handleViewClick = (id) => {
+    // Handle view button click logic here
+    console.log("View button clicked for row with ID:", id);
+  };
+
+  const handleEditClick = (id) => {
+    // Handle edit button click logic here
+    console.log("Edit button clicked for row with ID:", id);
+  };
+
+  const handleDeleteClick = (id) => {
+    // Handle delete button click logic here
+    console.log("Delete button clicked for row with ID:", id);
+  };
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -50,14 +67,42 @@ const Contacts = () => {
       headerName: "Zip Code",
       flex: 1,
     },
+    {
+      headerName: "Actions",
+      flex: 0.6,
+      renderCell: (params) => (
+        <Box>
+          <Tooltip title="View">
+            <Link to={`/project/viewproject/${params.row.id}`}>
+              <IconButton
+                onClick={() => handleViewClick(params.row.id, params.row.role)}
+              >
+                <VisibilityIcon />
+              </IconButton>
+            </Link>
+          </Tooltip>
+          <Tooltip title="Edit">
+            <Link to={`/project/editproject/${params.row.id}`}>
+              <IconButton
+                onClick={() => handleEditClick(params.row.id, params.row.role)}
+              >
+                <EditIcon />
+              </IconButton>
+            </Link>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton onClick={() => handleDeleteClick(params.row.id)}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      ),
+    },
   ];
 
   return (
     <Box m="20px">
-      <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
-      />
+      <Header title="CONTACTS" subtitle="List of Contacts for All the Users" />
       <Box
         m="40px 0 0 0"
         height="75vh"
