@@ -21,23 +21,33 @@ const Viewclient = () => {
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            User Name
+            First Name
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>User Name: Sample User Name goes here.</Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion defaultExpanded>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography color={colors.greenAccent[500]} variant="h5">
-            User Description
+            Last Name
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            User Description: Sample User description goes here.
+          <Typography>User Name: Sample User Name goes here.</Typography>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography color={colors.greenAccent[500]} variant="h5">
+            User Email
           </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>User Email: Sample User email goes here.</Typography>
         </AccordionDetails>
       </Accordion>
 

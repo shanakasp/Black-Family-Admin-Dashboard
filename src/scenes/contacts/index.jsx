@@ -28,43 +28,22 @@ const Contacts = () => {
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+
     {
       field: "name",
-      headerName: "Name",
+      headerName: "First Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
+
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "city",
+      headerName: "Last Name",
       flex: 1,
     },
     {
       field: "email",
       headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
       flex: 1,
     },
     {
@@ -139,6 +118,7 @@ const Contacts = () => {
           rows={mockDataContacts}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
+          sx={{ fontSize: "15px" }}
         />
       </Box>
     </Box>

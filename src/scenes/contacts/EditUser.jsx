@@ -82,7 +82,7 @@ const EditClient = () => {
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
-              <Typography variant="h6">Name of the User</Typography>
+              <Typography variant="h6">First Name of the User</Typography>
               <TextField
                 fullWidth
                 variant="filled"
@@ -94,12 +94,11 @@ const EditClient = () => {
                 helperText={touched.name && errors.name}
                 sx={{ gridColumn: "span 4", mt: "-20px" }}
               />
-              <Typography variant="h6">User Description </Typography>
+              <Typography variant="h6">Last Name of the User </Typography>
               <TextField
                 fullWidth
                 multiline
                 variant="filled"
-                rows={6}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.description}
@@ -107,21 +106,6 @@ const EditClient = () => {
                 error={!!touched.description && !!errors.description}
                 helperText={touched.description && errors.description}
                 sx={{ gridColumn: "span 4", mt: "-20px" }}
-              />
-
-              <TextField
-                fullWidth
-                variant="filled"
-                type="date"
-                label="Added Date (mm/dd/yyyy)"
-                InputLabelProps={{ shrink: true }}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.add_date}
-                name="add_date"
-                error={!!touched.add_date && !!errors.add_date}
-                helperText={touched.add_date && errors.add_date}
-                sx={{ gridColumn: "span 2" }}
               />
               <TextField
                 fullWidth
@@ -131,10 +115,9 @@ const EditClient = () => {
                 onChange={handleChange}
                 value={values.other}
                 name="other"
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 4" }}
               />
-
-              <Box sx={{ gridColumn: "span 2", marginLeft: "54%" }}>
+              <Box sx={{ gridColumn: "span 2" }}>
                 <label htmlFor="image-upload">
                   <input
                     id="image-upload"
@@ -152,16 +135,17 @@ const EditClient = () => {
                     startIcon={<ImageIcon />}
                   >
                     update User Image
-                  </Button>
+                  </Button>{" "}
+                  <br></br>
+                  {previewImage && (
+                    <img
+                      src={previewImage}
+                      alt="Preview"
+                      style={{ width: 200, height: 200 }}
+                    />
+                  )}
                 </label>
               </Box>
-              {previewImage && (
-                <img
-                  src={previewImage}
-                  alt="Preview"
-                  style={{ width: 100, height: 100 }}
-                />
-              )}
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
