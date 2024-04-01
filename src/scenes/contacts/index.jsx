@@ -73,7 +73,7 @@ const Contacts = () => {
       renderCell: (params) => (
         <Box>
           <Tooltip title="View">
-            <Link to={`/project/viewproject/${params.row.id}`}>
+            <Link to={`/contacts/view/${params.row.id}`}>
               <IconButton
                 onClick={() => handleViewClick(params.row.id, params.row.role)}
               >
@@ -82,7 +82,7 @@ const Contacts = () => {
             </Link>
           </Tooltip>
           <Tooltip title="Edit">
-            <Link to={`/project/editproject/${params.row.id}`}>
+            <Link to={`/contacts/edit/${params.row.id}`}>
               <IconButton
                 onClick={() => handleEditClick(params.row.id, params.row.role)}
               >

@@ -2,6 +2,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Contacts from "./scenes/contacts";
+import EditUser from "./scenes/contacts/EditUser";
+import ViewUser from "./scenes/contacts/ViewUser";
 import Dashboard from "./scenes/dashboard";
 import Sidebar from "./scenes/global/Sidebar";
 import Topbar from "./scenes/global/Topbar";
@@ -23,6 +25,8 @@ function App() {
               <Route path="/" element={<Dashboard />} />
 
               <Route path="/contacts" element={<Contacts />} />
+              <Route path="/contacts/view/:id" element={<ViewUser />} />
+              <Route path="/contacts/edit/:id" element={<EditUser />} />
             </Routes>
           </main>
         </div>
