@@ -18,7 +18,7 @@ const Contacts = () => {
     const fetchContacts = async () => {
       try {
         const response = await fetch(
-          "https://blackapi.hasthiya.org/admin/getAllusersForAdmin?limit=90000000000",
+          "https://blackapi.hasthiya.org/admin/getAllusersForAdmin?limit=100",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ const Contacts = () => {
       <Header title="CONTACTS" subtitle="List of Contacts for All the Users" />
       <Box
         m="40px 0 0 0"
-        height="75vh"
+        height="65vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -137,8 +137,8 @@ const Contacts = () => {
           components={{ Toolbar: GridToolbar }}
           keyExtractor={(item) => item.id} // Add keyExtractor to specify the key prop
           rowHeight={36}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={7}
+          rowsPerPageOptions={[7]}
           pagination
           sx={{
             fontSize: "15px",

@@ -49,29 +49,29 @@ const Viewclient = () => {
         <>
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography color={colors.greenAccent[500]} variant="h5">
+              <Typography color={colors.blueAccent[400]} variant="h5">
                 First Name
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>User Name: {userData.firstName}</Typography>
+              <Typography>User First Name: {userData.firstName}</Typography>
             </AccordionDetails>
           </Accordion>
 
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography color={colors.greenAccent[500]} variant="h5">
+              <Typography color={colors.blueAccent[400]} variant="h5">
                 Last Name
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>User Name: {userData.lastName}</Typography>
+              <Typography>User Last Name: {userData.lastName}</Typography>
             </AccordionDetails>
           </Accordion>
 
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography color={colors.greenAccent[500]} variant="h5">
+              <Typography color={colors.blueAccent[400]} variant="h5">
                 User Email
               </Typography>
             </AccordionSummary>
@@ -82,7 +82,7 @@ const Viewclient = () => {
 
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography color={colors.greenAccent[500]} variant="h5">
+              <Typography color={colors.blueAccent[400]} variant="h5">
                 User Image
               </Typography>
             </AccordionSummary>
