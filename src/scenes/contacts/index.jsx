@@ -27,11 +27,11 @@ const Contacts = () => {
         );
         const data = await response.json();
         if (data && data.success && data.users && data.users.data) {
+          const sortedData = data.users.data.sort((a, b) => a.id - b.id);
           setContactsData(
-            data.users.data.map((user) => ({
+            sortedData.map((user) => ({
               id: user.id,
               name: `${user.firstName} ${user.lastName}`,
-
               email: user.email,
             }))
           );
