@@ -135,7 +135,7 @@ const Contacts = () => {
           rows={contactsData}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
-          keyExtractor={(item) => item.id} // Add keyExtractor to specify the key prop
+          keyExtractor={(item) => item.id}
           rowHeight={36}
           pageSize={7}
           rowsPerPageOptions={[7]}
