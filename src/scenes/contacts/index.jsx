@@ -18,7 +18,7 @@ const Contacts = () => {
     const fetchContacts = async () => {
       try {
         const response = await fetch(
-          "https://blackapi.hasthiya.org/admin/getAllusersForAdmin?limit=4",
+          "https://blackapi.hasthiya.org/admin/getAllusersForAdmin?limit=90000000000",
           {
             headers: {
               Authorization: `Bearer ${token}`,
