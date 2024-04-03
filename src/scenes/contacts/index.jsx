@@ -1,51 +1,70 @@
-import DeleteIcon from "@mui/icons-material/Delete"; // Import DeleteIcon
-import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Box, IconButton, Tooltip, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { mockDataContacts } from "../../data/mockData";
 import { tokens } from "../../theme";
+
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [contactsData, setContactsData] = useState([]);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const response = await fetch(
+          "https://blackapi.hasthiya.org/admin/getAllusersForAdmin?limit=100",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
+        if (data && data.success && data.users && data.users.data) {
+          const sortedData = data.users.data.sort((a, b) => a.id - b.id);
+          setContactsData(
+            sortedData.map((user) => ({
+              id: user.id,
+              name: `${user.firstName} ${user.lastName}`,
+              email: user.email,
+            }))
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching contacts:", error);
+      }
+    };
+
+    if (token) {
+      fetchContacts();
+    }
+  }, [token]);
 
   const handleViewClick = (id) => {
-    // Handle view button click logic here
     console.log("View button clicked for row with ID:", id);
   };
 
   const handleEditClick = (id) => {
-    // Handle edit button click logic here
     console.log("Edit button clicked for row with ID:", id);
   };
 
   const handleDeleteClick = (id) => {
-    // Handle delete button click logic here
     console.log("Delete button clicked for row with ID:", id);
   };
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-
     {
       field: "name",
-      headerName: "First Name",
+      headerName: "Full Name",
       flex: 1,
       cellClassName: "name-column--cell",
     },
-
-    {
-      field: "city",
-      headerName: "Last Name",
-      flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
+    { field: "email", headerName: "Email", flex: 1 },
     {
       headerName: "Actions",
       flex: 0.6,
@@ -53,18 +72,14 @@ const Contacts = () => {
         <Box>
           <Tooltip title="View">
             <Link to={`/contacts/view/${params.row.id}`}>
-              <IconButton
-                onClick={() => handleViewClick(params.row.id, params.row.role)}
-              >
+              <IconButton onClick={() => handleViewClick(params.row.id)}>
                 <VisibilityIcon />
               </IconButton>
             </Link>
           </Tooltip>
-          <Tooltip title="Edit">
+          {/* <Tooltip title="Edit">
             <Link to={`/contacts/edit/${params.row.id}`}>
-              <IconButton
-                onClick={() => handleEditClick(params.row.id, params.row.role)}
-              >
+              <IconButton onClick={() => handleEditClick(params.row.id)}>
                 <EditIcon />
               </IconButton>
             </Link>
@@ -73,7 +88,7 @@ const Contacts = () => {
             <IconButton onClick={() => handleDeleteClick(params.row.id)}>
               <DeleteIcon />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
         </Box>
       ),
     },
@@ -84,7 +99,7 @@ const Contacts = () => {
       <Header title="CONTACTS" subtitle="List of Contacts for All the Users" />
       <Box
         m="40px 0 0 0"
-        height="75vh"
+        height="65vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -93,7 +108,7 @@ const Contacts = () => {
             borderBottom: "none",
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[300],
+            color: colors.blueAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],
@@ -115,10 +130,17 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={contactsData}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
-          sx={{ fontSize: "15px" }}
+          keyExtractor={(item) => item.id}
+          rowHeight={36}
+          pageSize={7}
+          rowsPerPageOptions={[7]}
+          pagination
+          sx={{
+            fontSize: "15px",
+          }}
         />
       </Box>
     </Box>
