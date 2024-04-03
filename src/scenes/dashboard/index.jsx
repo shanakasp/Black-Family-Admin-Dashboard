@@ -11,8 +11,8 @@ const Dashboard = () => {
       <Box>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
-        <Box>
-          {/* <Button
+        {/* <Box>
+          <Button
             sx={{
               backgroundColor: colors.blueAccent[700],
               color: colors.grey[100],
@@ -23,8 +23,8 @@ const Dashboard = () => {
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             Download Reports
-          </Button> */}
-        </Box>
+          </Button>
+        </Box> */}
       </Box>
 
       {/* GRID & CHARTS */}
@@ -34,7 +34,6 @@ const Dashboard = () => {
         gridAutoRows="140px"
         gap="20px"
       >
-        {/* ROW 1 */}
         {/* <Box
           gridColumn="span 3"
           backgroundColor={colors.primary[400]}
@@ -189,8 +188,8 @@ const Dashboard = () => {
             </Typography>
             <Typography>Includes extra misc expenditures and costs</Typography>
           </Box>
-        </Box>
-        <Box
+        </Box> */}
+        {/* <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -205,8 +204,8 @@ const Dashboard = () => {
           <Box height="250px" mt="-20px">
             <BarChart isDashboard={true} />
           </Box>
-        </Box>
-        <Box
+        {/* </Box> */}
+        {/* <Box
           gridColumn="span 4"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -222,7 +221,7 @@ const Dashboard = () => {
           <Box height="200px">
             <GeographyChart isDashboard={true} />
           </Box>
-        </Box> */}
+        </Box>  */}
       </Box>
     </Box>
   );
