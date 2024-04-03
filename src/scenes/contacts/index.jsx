@@ -1,5 +1,3 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Box, IconButton, Tooltip, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
@@ -79,7 +77,7 @@ const Contacts = () => {
               </IconButton>
             </Link>
           </Tooltip>
-          <Tooltip title="Edit">
+          {/* <Tooltip title="Edit">
             <Link to={`/contacts/edit/${params.row.id}`}>
               <IconButton onClick={() => handleEditClick(params.row.id)}>
                 <EditIcon />
@@ -90,7 +88,7 @@ const Contacts = () => {
             <IconButton onClick={() => handleDeleteClick(params.row.id)}>
               <DeleteIcon />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
         </Box>
       ),
     },
